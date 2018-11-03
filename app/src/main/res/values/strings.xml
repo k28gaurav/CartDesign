@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CartSystem</string>
+    <string name="all_discounts">All Discounts</string>
+    <string name="all_items">All Items</string>
+    <string name="clear_sale">Clear Sale</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="discount">Discount</string>
+</resources>
