@@ -60,7 +60,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="white"
+            android:textColor="@color/white"
             android:gravity="center"
             android:layout_marginTop="@dimen/margin_small"
             android:padding="@dimen/padding_normal"
