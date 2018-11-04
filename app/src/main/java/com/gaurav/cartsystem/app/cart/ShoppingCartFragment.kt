@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.gaurav.cartsystem.R
 import com.gaurav.cartsystem.app.base.DaggerBaseFragment
+import com.gaurav.cartsystem.app.cart.DiscountFragment.OnClickDiscountItems
 import com.gaurav.cartsystem.data.db.entities.CartItem
 import com.gaurav.cartsystem.data.db.entities.Item
 import kotlinx.android.synthetic.main.fragment_cart.bt_clear_sale
@@ -19,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_cart.tv_charge
 import kotlinx.android.synthetic.main.fragment_cart.tv_discount
 import kotlinx.android.synthetic.main.fragment_cart.tv_subtotal
 import kotlinx.android.synthetic.main.layout_fragment_header.tv_fragment_header
+import java.lang.RuntimeException
 import java.text.DecimalFormat
 import javax.inject.Inject
 
@@ -37,6 +39,11 @@ class ShoppingCartFragment @Inject constructor(): DaggerBaseFragment<ShoppingCar
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         viewModel = ViewModelProviders.of(this, viewModelFactory)[ShoppingCartViewModel::class.java]
+        if (context is ShowEditItemToCartDialogListener) {
+            showEditItemToCartDialogListener = context
+        } else {
+            throw RuntimeException("Must Implement OnClickDiscountItems")
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

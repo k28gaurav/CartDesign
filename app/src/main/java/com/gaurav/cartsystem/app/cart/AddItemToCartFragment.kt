@@ -30,9 +30,6 @@ class AddItemToCartFragment : BaseDialogFragment() {
 
     lateinit var onAddCartItemSave: ShowAddItemToCartDialogListener
 
-
-    //  @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         if(context is ShowAddItemToCartDialogListener) {
@@ -45,7 +42,6 @@ class AddItemToCartFragment : BaseDialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v =  inflater.inflate(R.layout.dialog_add_item_to_cart,container,false)
-     //   viewModel = ViewModelProviders.of(this, viewModelFactory)[AddItemToCartViewModel::class.java]
 
         Utils.getDiscounts().forEach { discount ->
             val discountView = activity?.inflateLayout(R.layout.layout_discount_with_name, null, false)
@@ -92,7 +88,6 @@ class AddItemToCartFragment : BaseDialogFragment() {
             }
 
             cartItem?.let {
-
                 onAddCartItemSave.saveCartItem(it)
             }
             dismiss()
