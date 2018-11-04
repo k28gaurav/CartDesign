@@ -47,6 +47,8 @@ dependencies {
         implementation "android.arch.persistence.room:runtime:$config.roomVersion"
         kapt "android.arch.persistence.room:compiler:$config.roomVersion"
         implementation "android.arch.persistence.room:rxjava2:$config.roomVersion"
+        implementation "android.arch.paging:runtime:$config.pagingVersion"
+        implementation "android.arch.paging:rxjava2:$config.pagingRxJava2"
     }
 
     //4
@@ -55,10 +57,8 @@ dependencies {
         implementation "com.squareup.okhttp3:okhttp:$config.okHttp"
         implementation "com.google.code.gson:gson:$config.gson"
         implementation 'com.facebook.stetho:stetho:1.5.0'
-        implementation ('io.socket:socket.io-client:1.0.0') {
-            // excluding org.json which is provided by Android
-            exclude group: 'org.json', module: 'json'
-        }
+        implementation "com.squareup.retrofit2:converter-gson:$config.retrofit"
+        implementation "com.squareup.retrofit2:adapter-rxjava2:$config.retrofit"
         implementation "com.github.bumptech.glide:glide:$config.glide"
         kapt "com.github.bumptech.glide:compiler:$config.glide"
     }

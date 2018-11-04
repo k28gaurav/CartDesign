@@ -3,22 +3,31 @@ package com.gaurav.cartsystem.data.db.entities
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "items")
 data class Item(
-    @PrimaryKey
-    @ColumnInfo(name = "id")
-    val id: Int,
+        @PrimaryKey
+        @SerializedName("id")
+        @ColumnInfo(name = "id")
+        val id: Int,
 
-    @ColumnInfo(name = "album_id")
-    val albumId: Int,
+        @SerializedName("albumId")
+        @ColumnInfo(name = "album_id")
+        val albumId: Int,
 
-    @ColumnInfo(name = "title")
-    val title: String,
+        @SerializedName("title")
+        @ColumnInfo(name = "title")
+        val title: String,
 
-    @ColumnInfo(name = "url")
-    val url: String,
+        @SerializedName("url")
+        @ColumnInfo(name = "url")
+        val url: String,
 
-    @ColumnInfo(name = "thumbnail_url")
-    val thumbnailUrl: String
+        @SerializedName("thumbnailUrl")
+        @ColumnInfo(name = "thumbnail_url")
+        val thumbnailUrl: String,
+
+        @ColumnInfo(name = "price")
+        var price: Double? = 0.0
 )

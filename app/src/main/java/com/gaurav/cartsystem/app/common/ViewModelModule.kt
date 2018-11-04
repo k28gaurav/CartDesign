@@ -2,6 +2,7 @@ package com.gaurav.cartsystem.app.common
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
+import com.gaurav.cartsystem.app.cart.AllItemsViewModel
 import com.gaurav.cartsystem.app.cart.CartViewModel
 import dagger.Binds
 import dagger.Module
@@ -16,6 +17,11 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(CartViewModel::class)
-    abstract fun splashViewModel(viewModel: CartViewModel): ViewModel
+    abstract fun cartViewModel(viewModel: CartViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AllItemsViewModel::class)
+    abstract fun allItemsViewModel(viewModel: AllItemsViewModel): ViewModel
 
 }
