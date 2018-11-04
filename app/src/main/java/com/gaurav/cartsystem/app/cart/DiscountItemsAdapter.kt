@@ -23,7 +23,6 @@ class DiscountItemsAdapter(val context: Context, val onItemClick: (position: Int
             item?.let {
                 onItemClick.invoke(position, it)
             }
-
         }
     }
 

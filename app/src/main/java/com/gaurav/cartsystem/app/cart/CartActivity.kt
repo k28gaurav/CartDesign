@@ -34,8 +34,8 @@ class CartActivity : DaggerBaseActivity<CartViewModel>(), LibraryFragment.Change
 
     override fun initViews() {
         supportFragmentManager?.beginTransaction()
-                ?.replace(fl_library_container.id, libraryFragment, "library")
-                ?.replace(fl_cart_container.id, cartFragment, "cart")
+                ?.add(fl_library_container.id, libraryFragment, "library")
+                ?.add(fl_cart_container.id, cartFragment, "cart")
                 ?.commit()
         super.initViews()
     }
@@ -45,12 +45,14 @@ class CartActivity : DaggerBaseActivity<CartViewModel>(), LibraryFragment.Change
             LibraryFragment.NextFrag.ALL_ITEMS -> {
                 supportFragmentManager?.beginTransaction()
                         ?.replace(fl_library_container.id, allItemsFragment, "allItems")
+                        ?.addToBackStack(null)
                         ?.commit()
             }
 
             LibraryFragment.NextFrag.ALL_DISCOUNT -> {
                     supportFragmentManager?.beginTransaction()
                             ?.replace(fl_library_container.id, discountFragment, "discountItems")
+                            ?.addToBackStack(null)
                             ?.commit()
             }
         }
