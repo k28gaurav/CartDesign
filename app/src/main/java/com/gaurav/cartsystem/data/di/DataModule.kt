@@ -1,7 +1,6 @@
 package com.gaurav.cartsystem.data.di
 
 import com.gaurav.cartsystem.data.cart.CartRepositoryImpl
-import com.gaurav.cartsystem.data.db.entities.Item
 import com.gaurav.cartsystem.domain.repository.CartRepository
 import dagger.Binds
 import dagger.Module

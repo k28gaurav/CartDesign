@@ -47,6 +47,5 @@ class CartActivity : DaggerBaseActivity<CartViewModel>(), LibraryFragment.Change
     }
 
     override fun onShowAddItemToCartDialog(item: Item) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

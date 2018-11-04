@@ -2,6 +2,7 @@ package com.gaurav.cartsystem.data.di
 
 import android.content.Context
 import com.gaurav.cartsystem.app.utils.Constants
+import com.gaurav.cartsystem.data.cart.service.CartApiService
 import com.gaurav.cartsystem.domain.repository.CartRepository
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -46,8 +47,8 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideCartApiService(retrofit: Retrofit): CartRepository {
-        return retrofit.create(CartRepository::class.java)
+    fun provideCartApiService(retrofit: Retrofit): CartApiService {
+        return retrofit.create(CartApiService::class.java)
     }
 
 }

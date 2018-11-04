@@ -29,7 +29,7 @@ class LibraryFragment @Inject constructor(): DaggerBaseFragment<LibraryViewModel
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_library, container)
+        return inflater.inflate(R.layout.fragment_library, container, false)
     }
 
 

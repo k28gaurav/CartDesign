@@ -6,17 +6,4 @@ import com.gaurav.cartsystem.app.rx.SchedulersFacade
 import com.gaurav.cartsystem.data.cart.service.CartApiService
 import javax.inject.Inject
 
-class CartViewModel @Inject constructor(schedulersFacade: SchedulersFacade, private val cartApiService: CartApiService): BaseViewModel(schedulersFacade) {
-
-    var errorObserver = MutableLiveData<String>()
-
-    fun getAllcartItems() {
-        cartApiService.getCartItems().observeOn(schedulers.ui()).subscribeOn(schedulers.io())
-                .subscribe ( {items ->
-
-                }, {error ->
-
-                }
-                )
-    }
-}
+class CartViewModel @Inject constructor(schedulersFacade: SchedulersFacade): BaseViewModel(schedulersFacade)

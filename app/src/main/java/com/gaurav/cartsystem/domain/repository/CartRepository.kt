@@ -1,6 +1,7 @@
 package com.gaurav.cartsystem.domain.repository
 
 import android.arch.lifecycle.LiveData
+import android.arch.paging.PagedList
 import com.gaurav.cartsystem.data.db.entities.CartItem
 import com.gaurav.cartsystem.data.db.entities.Item
 import io.reactivex.Single

@@ -7,8 +7,7 @@ import com.gaurav.cartsystem.data.db.dao.ItemDao
 import com.gaurav.cartsystem.data.db.entities.CartItem
 import com.gaurav.cartsystem.data.db.entities.Item
 
-@Database(entities = [Item::class, CartItem::class], version = 1)
+@Database(entities = [Item::class], version = 1)
 abstract class CartDatabase: RoomDatabase() {
     abstract fun itemDao(): ItemDao
-    abstract fun cartItemDao(): CartItemDao
 }

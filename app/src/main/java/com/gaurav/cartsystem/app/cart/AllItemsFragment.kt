@@ -14,7 +14,7 @@ import com.gaurav.cartsystem.data.db.entities.Item
 import java.lang.RuntimeException
 import javax.inject.Inject
 
-class AllItemsFragment: DaggerBaseFragment<AllItemsViewModel>() {
+class AllItemsFragment @Inject constructor(): DaggerBaseFragment<AllItemsViewModel>() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -25,7 +25,7 @@ class AllItemsFragment: DaggerBaseFragment<AllItemsViewModel>() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_all_items, container)
+        return inflater.inflate(R.layout.fragment_all_items, container, false)
     }
 
     override fun onAttach(context: Context?) {
