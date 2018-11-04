@@ -10,13 +10,14 @@ import dagger.android.support.DaggerFragment
 
 abstract class DaggerBaseFragment<VM: BaseViewModel>: DaggerFragment(),  View.OnClickListener {
 
-    protected var viewModel: VM? = null
+    protected lateinit var viewModel: VM
 
     var isFragmentShowCalled = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+        observeViewModel()
     }
 
     protected open fun initViews() {
@@ -34,6 +35,10 @@ abstract class DaggerBaseFragment<VM: BaseViewModel>: DaggerFragment(),  View.On
     }
 
     override fun onClick(view: View?) {
+
+    }
+
+    protected open fun observeViewModel() {
 
     }
 }
