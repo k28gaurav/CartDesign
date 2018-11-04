@@ -28,7 +28,11 @@ class CartRepositoryImpl @Inject constructor(private val cartDatabase: CartDatab
         return cartApiService.getAllItems()
     }
 
-    override fun saveCartItem(cartItem: CartItem) {
+    override fun saveCartItem(cartItem: CartItem): Single<List<Long>> {
+        return Single.create<List<Long>> { subscriber ->
+            val res = cartDatabase.cartItemDao().insertCartItems(cartItem)
+            subscriber.onSuccess(res)
+        }
 
     }
 
@@ -37,10 +41,16 @@ class CartRepositoryImpl @Inject constructor(private val cartDatabase: CartDatab
     }
 
     override fun deleteCartItem(cartItem: CartItem) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun getCartItems(): LiveData<PagedList<Item>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getCartItems(): LiveData<PagedList<CartItem>> {
+        return LivePagedListBuilder(cartDatabase.cartItemDao().getCartItems(), 20).build()
+    }
+
+    override fun clearCart(): Single<Any> {
+        return Single.create<Any> { subscriber ->
+            val res = cartDatabase.cartItemDao().clearCartItems()
+            subscriber.onSuccess("lol")
+        }
     }
 }

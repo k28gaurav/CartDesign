@@ -16,16 +16,16 @@ import io.reactivex.Single
 interface CartItemDao {
 
     @Query("SELECT * FROM cart_items")
-    fun getItems(): DataSource.Factory<Int, Item>
+    fun getCartItems(): DataSource.Factory<Int, CartItem>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertCartItems(vararg items: Item)
+    fun insertCartItems(vararg items: CartItem): List<Long>
 
     @Update
-    fun updateCartItems(vararg items: Item)
+    fun updateCartItems(vararg items: CartItem)
 
     @Delete
-    fun deleteCartItems(vararg items: Item)
+    fun deleteCartItems(vararg items: CartItem)
 
     @Query("DELETE FROM cart_items")
     fun clearCartItems()

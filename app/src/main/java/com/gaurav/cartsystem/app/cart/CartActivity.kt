@@ -5,13 +5,16 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import com.gaurav.cartsystem.R
 import com.gaurav.cartsystem.app.base.DaggerBaseActivity
+import com.gaurav.cartsystem.data.db.entities.CartItem
 import com.gaurav.cartsystem.data.db.entities.Item
 import kotlinx.android.synthetic.main.activity_cart.fl_cart_container
 import kotlinx.android.synthetic.main.activity_cart.fl_library_container
 import javax.inject.Inject
 
 class CartActivity : DaggerBaseActivity<CartViewModel>(), LibraryFragment.ChangeFragmentListener,
-        AllItemsFragment.ShowAddItemToCartDialogListener{
+        AllItemsFragment.ShowAddItemToCartDialogListener, AddItemToCartFragment.ShowAddItemToCartDialogListener,
+        ShoppingCartFragment.ShowEditItemToCartDialogListener{
+
 
 
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -29,8 +32,8 @@ class CartActivity : DaggerBaseActivity<CartViewModel>(), LibraryFragment.Change
 
     override fun initViews() {
         supportFragmentManager?.beginTransaction()
-                ?.add(fl_library_container.id, libraryFragment, "library")
-                ?.add(fl_cart_container.id, cartFragment, "cart")
+                ?.replace(fl_library_container.id, libraryFragment, "library")
+                ?.replace(fl_cart_container.id, cartFragment, "cart")
                 ?.commit()
         super.initViews()
     }
@@ -46,6 +49,19 @@ class CartActivity : DaggerBaseActivity<CartViewModel>(), LibraryFragment.Change
         }
     }
 
-    override fun onShowAddItemToCartDialog(item: Item) {
+    override fun saveCartItem(cartItem: CartItem) {
+        viewModel.saveCartItem(cartItem)
     }
+
+    override fun onShowAddItemToCartDialog(item: Item) {
+
+        AddItemToCartFragment.getInstance(false, item, null).show(supportFragmentManager, "")
+
+    }
+
+    override fun onShowEditItemToCartDialog(item: CartItem) {
+        AddItemToCartFragment.getInstance(true, null, item).show(supportFragmentManager, "")
+
+    }
+
 }

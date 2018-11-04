@@ -12,7 +12,7 @@ import com.gaurav.cartsystem.data.db.entities.Item
 class AllItemsAdapter(context: Context, val onItemClick: (position: Int, item: Item) -> Unit): PagedListAdapter<Item, AllItemsViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllItemsViewHolder {
-        val view = parent.context.inflateLayout(R.layout.item_cart, parent, false)
+        val view = parent.context.inflateLayout(R.layout.all_item_adapter, parent, false)
         return AllItemsViewHolder(view) { position ->
             val item = getItem(position)
             item?.let {

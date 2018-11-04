@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.gaurav.cartsystem.app.cart.AllItemsViewModel
 import com.gaurav.cartsystem.app.cart.CartViewModel
+import com.gaurav.cartsystem.app.cart.ShoppingCartViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -23,5 +24,10 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(AllItemsViewModel::class)
     abstract fun allItemsViewModel(viewModel: AllItemsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ShoppingCartViewModel::class)
+    abstract fun shoppingCartViewModel(viewModel: ShoppingCartViewModel): ViewModel
 
 }

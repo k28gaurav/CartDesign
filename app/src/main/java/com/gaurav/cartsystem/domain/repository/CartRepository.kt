@@ -9,15 +9,17 @@ import io.reactivex.Single
 interface CartRepository {
     fun getItems(): LiveData<PagedList<Item>>
 
-    fun saveCartItem(cartItem: CartItem)
+    fun saveCartItem(cartItem: CartItem):Single<List<Long>>
 
     fun updateCartItem(cartItem: CartItem)
 
     fun deleteCartItem(cartItem: CartItem)
 
-    fun getCartItems(): LiveData<PagedList<Item>>
+    fun getCartItems(): LiveData<PagedList<CartItem>>
 
     fun fetchItems(): Single<List<Item>>
 
     fun saveAllItems(items: List<Item>)
+
+    fun clearCart(): Single<Any>
 }
