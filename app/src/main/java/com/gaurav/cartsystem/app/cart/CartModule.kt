@@ -17,4 +17,10 @@ abstract class CartModule {
     @FragmentScoped
     @ContributesAndroidInjector
     abstract fun allItemsFragment(): AllItemsFragment
+
+    @FragmentScoped
+    @ContributesAndroidInjector
+    abstract fun discountItemsFragment(): DiscountFragment
+
+
 }

@@ -9,7 +9,9 @@ import java.text.DecimalFormat
 class CartItemsViewHolder (val view: View, onItemClick: (position: Int) -> Unit): BaseViewHolder<CartItem>(view) {
 
     init {
-        onItemClick.invoke(adapterPosition)
+        view.setOnClickListener {
+            onItemClick.invoke(adapterPosition)
+        }
     }
 
     override fun setData(data: CartItem) {

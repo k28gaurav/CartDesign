@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_cart.rv_cart_items
 import kotlinx.android.synthetic.main.fragment_cart.tv_charge
 import kotlinx.android.synthetic.main.fragment_cart.tv_discount
 import kotlinx.android.synthetic.main.fragment_cart.tv_subtotal
+import kotlinx.android.synthetic.main.layout_fragment_header.tv_fragment_header
 import java.text.DecimalFormat
 import javax.inject.Inject
 
@@ -48,6 +49,7 @@ class ShoppingCartFragment @Inject constructor(): DaggerBaseFragment<ShoppingCar
     }
 
     override fun initViews() {
+        tv_fragment_header.text = "SHOPPING CART"
         rv_cart_items.layoutManager = LinearLayoutManager(activity)
         activity?.let {
             cartItemsAdapter = CartItemsAdapter(it)  { position, item ->

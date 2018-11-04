@@ -7,13 +7,14 @@ import com.gaurav.cartsystem.R
 import com.gaurav.cartsystem.app.base.DaggerBaseActivity
 import com.gaurav.cartsystem.data.db.entities.CartItem
 import com.gaurav.cartsystem.data.db.entities.Item
+import com.gaurav.cartsystem.data.models.DiscountItem
 import kotlinx.android.synthetic.main.activity_cart.fl_cart_container
 import kotlinx.android.synthetic.main.activity_cart.fl_library_container
 import javax.inject.Inject
 
 class CartActivity : DaggerBaseActivity<CartViewModel>(), LibraryFragment.ChangeFragmentListener,
         AllItemsFragment.ShowAddItemToCartDialogListener, AddItemToCartFragment.ShowAddItemToCartDialogListener,
-        ShoppingCartFragment.ShowEditItemToCartDialogListener{
+        ShoppingCartFragment.ShowEditItemToCartDialogListener, DiscountFragment.OnClickDiscountItems{
 
 
 
@@ -22,6 +23,7 @@ class CartActivity : DaggerBaseActivity<CartViewModel>(), LibraryFragment.Change
     @Inject lateinit var libraryFragment: LibraryFragment
     @Inject lateinit var cartFragment: ShoppingCartFragment
     @Inject lateinit var allItemsFragment: AllItemsFragment
+    @Inject lateinit var discountFragment: DiscountFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +47,12 @@ class CartActivity : DaggerBaseActivity<CartViewModel>(), LibraryFragment.Change
                         ?.replace(fl_library_container.id, allItemsFragment, "allItems")
                         ?.commit()
             }
-            else -> {}
+
+            LibraryFragment.NextFrag.ALL_DISCOUNT -> {
+                    supportFragmentManager?.beginTransaction()
+                            ?.replace(fl_library_container.id, discountFragment, "discountItems")
+                            ?.commit()
+            }
         }
     }
 
@@ -61,6 +68,10 @@ class CartActivity : DaggerBaseActivity<CartViewModel>(), LibraryFragment.Change
 
     override fun onShowEditItemToCartDialog(item: CartItem) {
         AddItemToCartFragment.getInstance(true, null, item).show(supportFragmentManager, "")
+
+    }
+
+    override fun addDiscountToCart(item: DiscountItem) {
 
     }
 

@@ -2,6 +2,7 @@ package com.gaurav.cartsystem.app.base
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import timber.log.Timber
 
 abstract class BaseViewHolder<T>(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener{
 
@@ -14,6 +15,5 @@ abstract class BaseViewHolder<T>(view: View) : RecyclerView.ViewHolder(view), Vi
 
 
     override fun onClick(clickedView: View?) {
-
     }
 }

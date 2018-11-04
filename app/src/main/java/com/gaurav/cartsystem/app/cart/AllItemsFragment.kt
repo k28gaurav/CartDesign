@@ -13,6 +13,7 @@ import com.gaurav.cartsystem.R
 import com.gaurav.cartsystem.app.base.DaggerBaseFragment
 import com.gaurav.cartsystem.data.db.entities.Item
 import kotlinx.android.synthetic.main.fragment_all_items.rv_all_items
+import kotlinx.android.synthetic.main.layout_fragment_header.tv_fragment_header
 import java.lang.RuntimeException
 import javax.inject.Inject
 
@@ -41,6 +42,7 @@ class AllItemsFragment @Inject constructor(): DaggerBaseFragment<AllItemsViewMod
     }
 
     override fun initViews() {
+        tv_fragment_header.text = "ALL ITEMS"
         rv_all_items.layoutManager = LinearLayoutManager(activity)
         activity?.let {
             allItemsAdapter = AllItemsAdapter(it) { position, item ->
